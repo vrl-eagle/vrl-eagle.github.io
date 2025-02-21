@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="description"
+    content="Efficient Training of Generalizable Visuomotor Policies via Control-Aware Augmentation">
+  <meta name="keywords" content="Zero-shot Generalization, Visuomotor Policies, Data Augmentation">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Efficient Training of Generalizable Visuomotor Policies via Control-Aware Augmentation</title>
+
+
+  <script>
+    window.dataLayer = window.dataLayer || [];
+  </script>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+  <!-- <link href="./static/css/googlecss.css"
+        rel="stylesheet"> -->
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet" href="./static/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="./static/images/favicon.svg">
+
+  <script src="./static/js/jquerymin351.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+  <style>
+    .author-block {
+        display: block;
+    }
+
+</style>
+
+</head>
+
+<body>
+
+
+  <section class="hero">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column has-text-centered">
+            <h1 class="title is-1 publication-title">Efficient Training of Generalizable Visuomotor Policies via
+              Control-Aware Augmentation </h1>
+            <div class="is-size-5 publication-authors">
+                <!-- <span class="team-name"><b>Beijing Institute of Technology <p style="font-size: 70%"></p></b></span> -->
+                <span class="author-block">Yinuo Zhao<sup>1,3</sup>, Kun Wu<sup>2,3</sup> Tianjiao Yi<sup>1</sup>,
+                Zhiyuan Xu<sup>3</sup>, Zhengping Che<sup>3</sup>,<span class="author-block"></span> Qinru Qiu<sup>2</sup>, Chi Harold Liu<sup>1</sup>,Jian Tang<sup>3</sup>
+    
+                   
+
+                <div class="is-size-6 publication-authors"> 
+                  <span class="author-block">
+  
+                  </span>
+                 <br>
+               
+                <div class="is-size-5 publication-authors id=institute">
+                  <sup>1</sup>Beijing Institute of Technology, 
+                  <sup>2</sup>Syracuse University, 
+                  <sup>3</sup>Beijing Innovation Center of Humanoid Robotics
+  
+                </div>
+                 <br>           
+                </div>
+              </div>
+              
+        
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- <section class="hero teaser">
+    <div class="container is-max-desktop">
+      <div class="hero-body">
+         <video id="teaser" autoplay muted loop playsinline height="100%">
+          <source src="./static/videos/teaser.mp4" type="video/mp4">
+        </video> -->
+       
+
+      
+      <!-- </div>
+    </div>
+  </section>  -->
+
+  <section class="section" id="single-task-1">
+    <div class="container is-max-desktop">
+      <!-- Abstract. -->
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Abstract</h2>
+          <div class="content has-text-justified">
+            <p>
+              Improving generalization is one key challenge in Embodied AI,
+              where obtaining large-scale datasets across diverse scenarios is
+              costly. Traditional weak augmentations, such as cropping and flipping, are insufficient for improving a model’s performance in new
+              environments. Existing data augmentation methods often disrupt
+              task-relevant information in images, potentially degrading performance. To overcome these challenges, we introduce EAGLE—an
+              Efficient trAining framework for GeneraLizablE visuomotor policies—that improves upon existing methods by: 1) enhancing generalization by applying augmentation only to control-related regions
+              identified through a self-supervised control-aware mask; and 2)
+              improving training stability and efficiency by distilling knowledge
+              from an expert to a visuomotor student policy, which is then deployed to unseen environments without further fine-tuning. Comprehensive experiments on three domains—including the DMControl Generalization Benchmark (DMC-GB), the enhanced Robot Manipulation Distraction Benchmark (RMDB), and a long-sequential
+              drawer-opening task—validate the effectiveness of our method.
+          </div>
+        </div>
+      </div>
+      <br>
+      <!--/ Abstract. -->
+
+      <!-- Hardware Setup. -->
+    
+      <!-- / Hardware Setup. -->
+
+
+      <!-- RoboMIND Data Analysis. -->
+  <section class="section" id="demo">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column is-full-width">
+            <h2 class="title is-3">Method</h2>
+            <!-- <div class="container is-max-desktop"> -->
+            <div class="hero-body">
+              <!-- <video id="teaser" autoplay muted loop playsinline height="100%">
+                <source src="./static/videos/teaser.mp4" type="video/mp4">
+              </video> -->
+              <div class="yush-div-center">
+                <img src="./static/images/overview.jpg" class="img-responsive" style="width: 100%; height: auto;">
+              </div>
+
+f
+              <div class="content has-text-justified">
+                <p>
+                  We introduce EAGLE, an efficient training framework for generalizable visuomotor policies. The overall goal of EAGLE is to learn
+                  visuomotor policies that are invariant and capable of zero-shot
+                  generalization. EAGLE consists of two simultaneously optimized
+                  modules: a control-aware augmentation module and a privilegeguided distillation module. The former module retrieves temporal
+                  data from the replay buffer and conducts a self-supervised reconstruction task, accompanied by three auxiliary losses, to identify
+                  control-related pixels. The latter module augments the observation
+                  input and distills knowledge from a pretrained DRL expert (which
+                  processes only environment states) into the visuomotor student
+                  network (which processes only image observations). After training
+                  is completed, the visuomotor policy can be reliable deployed in
+                  complex environments with visual variations, without the need for
+                  fine-tuning or additional supervision.
+              </div>
+            </div>
+          <!-- </div> -->
+        </div>
+      </div>
+    </div>
+    <!-- / RoboMIND Data Analysis. -->
+  </section>
+
+  <section class="section" id="demo">
+    <div class="container is-max-desktop">
+      <!-- Experiment  -->
+      <div class="columns is-centered">
+        <div class="column is-full-width">
+          <h2 class="title is-3">Experiments</h2>
+      <!-- Experiment  -->
+        <h2 class="title is-4">Experiments on DMC-GB</h2>
+        <p> 
+          As shown in Tab. 1, EAGLE achieves an
+          average return of 761 in Hard settings, which is 17.4% higher than
+          previous state-of-the-art method SGQN. EAGLE overcomes visual
+          distraction limitations via control-aware masks that preserves task
+          critical regions while augmenting all irrelevant areas.
+        </p>
+        <br>
+        <div class="yush-div-center">
+          <img src="./static/images/dmcgb_table.jpg" class="img-responsive">
+        </div>
+        <br>
+        <h2 class="title is-4">Real-world Experiments</h2>
+        <p>To validate EAGLE in real-world scenarios, we select a typical
+          robot manipulation task of picking bread and placing it on a plate.
+          We used ACT
+          with ResNet50 as the backbone, and combine it with our control-
+          aware augmentation module and Random Conv techniques. We
+          compare the generalization performance of EAGLE and ACT by
+          averaging results over 20 trials with varying bread positions. As
+          shown in Tab. 2, EAGLE significantly improves generalization
+          when facing with changing backgrounds and added distractors,
+          whereas the baseline ACT lacks such generalization without proper
+          data augmentation.
+        </p>
+
+        <div class="yush-div-center">
+          <img src="./static/images/table2.jpg" class="img-responsive">
+        </div>
+      <br>
+
+      <div id="single-task">
+        <!-- Performance on Single Tasks.. -->
+         <br>
+        <!-- <h3 class="title is-4">Success Examples of ACT on Single Tasks</h3>  -->
+        <!-- <p> <b>Single Task Results</b>. ACT achieves an average success rate of 30.7% (Franka), 34.0% (Tien Kung), 55.3% (AgileX) and 38.0% (UR-5e).
+        </p> -->
+        <!-- <video width="640" height="360" controls>
+          <source src="your-video.mp4" type="video/mp4">
+      </video> -->
+
+        <div class="content has-text-justified">
+            <div class="columns">
+              <div class="column has-text-centered">
+                <div class="yush-div-center">
+                  <img src="./static/images/arm1.jpg" class="img-responsive" height="75%">
+                </div>
+                <p style="font-size: 125%"><b>Training</b></p>
+
+            </div>
+              <div class="column has-text-centered">
+                  
+                  <video poster="" id="" autoplay="" controls="" muted="" loop="" height="100%" playbackrate="2.0" style="border-radius: 5px;">
+                      <source src="./static/videos/video2.mp4" type="video/mp4">
+                  </video>
+                  <p style="font-size: 125%"><b>Testing<br>(Change Background)</b></p>
+              </div>
+              <div class="column has-text-centered">
+                  
+                  <video poster="" id="" autoplay="" controls="" muted="" loop="" height="100%" playbackrate="2.0" style="border-radius: 5px;">
+                      <source src="./static/videos/video3.mp4" type="video/mp4">
+                  </video>
+                  <p style="font-size: 125%"><b>Testing <br>(Add Distractors)</b></p>
+              </div>
+             
+
+          </div>
+         
+        </div>
+
+      </div>
+      <br>
+  </section>
+
+  <section class="section" id="demo">
+    <div class="container is-max-desktop">
+      <!-- Experiment  -->
+      <div class="columns is-centered">
+        <div class="column is-full-width">
+          <h2 class="title is-3">Conclusion</h2>
+      <!-- Experiment  -->
+      <p> In this paper, we address the generalization challenge of visuomotor policies in the face of visual changes. We propose an Efficient
+        trAining framework for GeneraLizablE visuomotor policies (EAGLE)
+        designed to identify control-related regions and facilitate zero-shot
+        generalization to unseen environments. EAGLE comprises two
+        jointly optimized modules: a control-aware augmentation module and a privilege-guided policy distillation module. The former
+        leverages a self-supervised reconstruction task with three auxiliary
+        losses to learn a control-aware attention mask, which distinguishes
+        task-irrelevant pixels and applies strong augmentations to minimize
+        generalization gaps. The latter distills knowledge from a pretrained
+        privileged expert into the visuomotor policies. We conduct extensive comparative and ablation studies across three challenging benchmarks to assess the efficacy of EAGLE. The experimental
+        results well validate the effectiveness of our approach.
+      </p>
+      <br>
+
+      <div id="single-task">
+        <!-- Performance on Single Tasks.. -->
+         <br>
+        <!-- <h3 class="title is-4">Success Examples of ACT on Single Tasks</h3>  -->
+        <!-- <p> <b>Single Task Results</b>. ACT achieves an average success rate of 30.7% (Franka), 34.0% (Tien Kung), 55.3% (AgileX) and 38.0% (UR-5e).
+        </p> -->
+        <!-- <video width="640" height="360" controls>
+          <source src="your-video.mp4" type="video/mp4">
+      </video> -->
+      </div>
+      <br>
+
+
+
+  </section>
+
+
+
+  <footer class="footer">
+    <div class="container">
+      <div class="columns is-centered">
+        <div class="column is-8">
+          <div class="content has-text-centered">
+            <p>
+              The website template was borrowed from <a href="https://github.com/nerfies/nerfies.github.io">NeRFies</a>
+              and <a href="https://eureka-research.github.io/">Eureka</a>.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+
+</html>
